@@ -1,7 +1,7 @@
 ---
 title: Introduction to distance sampling
 author: Centre for Research into Ecological and Environmental Modelling  **University of St Andrews**
-subtitle: Workshop, 17-28 February 2020
+subtitle: Workshop, 04-15 May 2020
 date: Exercise 4. Variance estimation for systematic survey designs
 output: 
   html_document:
@@ -15,11 +15,15 @@ output:
 knitr::opts_chunk$set(echo = TRUE, message=F, warning=F)
 ```
 
-In the lecture describing measures of precision, we explained that systematic survey designs usually have the best variance properties, but obtaining good estimates of the variance is a difficult problem for statisticians. In this exercise, we give an example of a situation where the systematic design gives a density estimate with much better precision than a random design. This means that the usual variance estimators used in the `ds` function, which are based on a random design, that are far too high. The true variance is low, but the estimated variance is high. We will see how to implement a post-stratification scheme that enables us to get a better estimate of the variance. We also look at another case to see that the unstratified variance estimates provided by `ds` are usually fine for a systematic design: things only go wrong when there are strong trends in animal density, especially when the strong trends are associated with changes in line length (e.g. the highest densities always occur on the shortest lines, or vice versa). 
+In the lecture describing measures of precision, we explained that systematic survey designs usually have the best variance properties, but obtaining good estimates of the variance is a difficult problem for statisticians. In this exercise, we give an example of a situation where the systematic design gives a density estimate with much better precision than a random design. This means that the usual variance estimators used in the `ds` function, which are based on random transect placement, are far too high. The true variance is low, but the estimated variance is high. 
+
+We will see how to implement a post-stratification scheme that enables us to get a better estimate of the variance. In [Section 6](#systematic-designs-where-post-stratification-is-not-needed-optional), we examine another case to see that the unstratified variance estimates provided by `ds` are usually fine for a systematic design: things only go wrong when there are strong trends in animal density, especially when the strong trends are associated with changes in line length (e.g. the highest densities always occur on the shortest lines, or vice versa). 
 
 We begin with a population and survey shown below. The data used for this exercise were simulated on a computer: they are not real data. Note the characteristics for the data in Figure 1: extreme trends with very high density on short lines and very low density on long lines. Additionally, the systematic design has covered a fairly large proportion of the survey area (the covered region is shaded). These are danger signals that the usual `ds` variance estimators might not work well and a post-stratification scheme should be considered. 
 
-![An example of survey data where there is a strong trend in density. The systematically placed search strips are shaded. Axis units are in kilometres.](https://workshops.distancesampling.org/standrews-2019/intro/practicals/figures/Prac_4_Figure_1.png)
+```{r fig.height=4, fig.cap="An example of survey data where there is a strong trend in density. The systematically placed search strips are shaded. Axis units are in kilometres.", echo=FALSE}
+knitr::include_graphics("https://workshops.distancesampling.org/standrews-2019/intro/practicals/figures/Prac_4_Figure_1.png")
+```
 
 # Objectives
 
@@ -119,7 +123,9 @@ Note that this estimator assumes that the numbering of the transects (in this ex
 
 The simulated population shown in Figure 2 does not exhibit strong trends across the survey region, otherwise, the strip dimensions and systematic design are the same as for the previous example. These data are stored in the data set `Systematic_variance_1`. 
 
-![An example of survey data that does not exhibit a trend in density. The systematically placed search strips are shaded. Axis units are in kilometres.](https://workshops.distancesampling.org/standrews-2019/intro/practicals/figures/Prac_4_Figure_2.png)
+```{r fig.height=4, fig.cap="An example of survey data that does **not** exhibit a trend in density. The systematically placed search strips are shaded. Axis units are in kilometres.", echo=FALSE}
+knitr::include_graphics("https://workshops.distancesampling.org/standrews-2019/intro/practicals/figures/Prac_4_Figure_2.png")
+```
 
 In the code below, these data are imported into `R` and a simple detection function model is fitted. The default estimate of variance is then compared to that obtained using the 'O2' estimator (Fewster et al. 2009).  
 
