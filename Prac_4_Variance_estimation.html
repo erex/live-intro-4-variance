@@ -439,7 +439,7 @@ summary {
 
 
 <h1 class="title toc-ignore">Introduction to distance sampling</h1>
-<h3 class="subtitle">Workshop, 04-15 May 2020</h3>
+<h3 class="subtitle">Workshop, 06-17 July 2020</h3>
 <h4 class="author">Centre for Research into Ecological and Environmental Modelling <strong>University of St Andrews</strong></h4>
 <h4 class="date">Exercise 4. Variance estimation for systematic survey designs</h4>
 
@@ -465,7 +465,7 @@ summary {
 </div>
 <div id="getting-started" class="section level1">
 <h1><span class="header-section-number">2</span> Getting started</h1>
-<p>Don’t forget to load the <code>Distance</code> package for your current <code>R</code> session.</p>
+<p>Don’t forget to load the <code>Distance</code> package for your session.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load package</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(Distance)</span></code></pre></div>
 </div>
@@ -514,7 +514,7 @@ summary {
 </div>
 <div id="post-stratification-to-improve-variance-estimation" class="section level1">
 <h1><span class="header-section-number">5</span> Post-stratification to improve variance estimation</h1>
-<p>The estimation of encounter rate variance in Exercise 4.1 used estimators that assumed the transect lines were randomly placed throughout the triangular region. In our case, the transects were not random, but systematic and, in some circumstances, taking this in account can substantially reduce the encounter rate variance. The data we are working with is an example of this, where there are very high densities on the very shortest lines. In samples of lines, collected using a completely random design, the sample, by chance, might not contain any very short lines, or it might contain several. The variance is therefore very high, because the density estimates will be greatly affected by how many lines fall into the short-line / high-density region: we will get very low density estimates if there are no short lines, but very high density estimates if there are several short lines. By contrast, in a systematic sample, we cover the region methodically and we will always get nearly the same number of lines falling in the high density region. The systematic density variance is therefore much lower than the random placement density variance. Although there is no way of getting a variance estimate that is exactly unbiased for a systematic sample , we can greatly improve on the random-based estimate by using a post-stratification scheme.</p>
+<p>The estimation of encounter rate variance in Exercise 4.1 used estimators that assumed the transect lines were randomly placed throughout the triangular region. In our case, the transects were not random, but systematic and, in some circumstances, taking this in account can substantially reduce the encounter rate variance. The data we are working with is an example of this, where there are very high densities on the very shortest lines. In samples of lines, collected using a completely random design, the sample, by chance, might not contain any very short lines, or it might contain several. The variance is therefore very high, because the density estimates will be greatly affected by how many lines fall into the short-line / high-density region: we will get very low density estimates if there are no short lines, but very high density estimates if there are several short lines. By contrast, in a systematic sample, we cover the region methodically and we will always get nearly the same number of lines falling in the high density region. The systematic density variance is therefore much lower than the random placement density variance. Although there is no way of getting a variance estimate that is exactly unbiased for a systematic sample <em>because it is effectively a sample of size 1- only the first line position was randomly chosen and the rest followed on deterministically from there.</em> We can greatly improve on the random-based estimate by using a post-stratification scheme.</p>
 <p>The post-stratification scheme works by grouping together pairs of adjacent lines from the systematic sample and each pair of adjacent lines is grouped into a stratum. The strata will improve variance estimation, because the systematic sample behaves more like a stratified sample than a random sample. This encounter rate estimator is called ‘O2’ (Fewster et al. 2009) and is implemented in the <code>dht2</code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Post-stratification - stratified variance estimation by grouping adjacent transects</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>

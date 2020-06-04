@@ -1,7 +1,7 @@
 ---
 title: Introduction to distance sampling
 author: Centre for Research into Ecological and Environmental Modelling  **University of St Andrews**
-subtitle: Workshop, 04-15 May 2020
+subtitle: Workshop, 06-17 July 2020
 date: Exercise 4. Variance estimation for systematic survey designs
 output: 
   html_document:
@@ -36,7 +36,7 @@ The aims of this exercise are to illustrate:
 
 # Getting started 
 
-Don't forget to load the `Distance` package for your current `R` session.
+Don't forget to load the `Distance` package for your session.
 
 ```{r, echo=T, eval=F}
 # Load package
@@ -101,7 +101,7 @@ Recall that we have a particular situation in which we have systematically place
 
 # Post-stratification to improve variance estimation
 
-The estimation of encounter rate variance in Exercise 4.1 used estimators that assumed the transect lines were randomly placed throughout the triangular region. In our case, the transects were not random, but systematic and, in some circumstances, taking this in account can substantially reduce the encounter rate variance. The data we are working with is an example of this, where there are very high densities on the very shortest lines. In samples of lines, collected using a completely random design, the sample, by chance, might not contain any very short lines, or it might contain several. The variance is therefore very high, because the density estimates will be greatly affected by how many lines fall into the short-line / high-density region: we will get very low density estimates if there are no short lines, but very high density estimates if there are several short lines. By contrast, in a systematic sample, we cover the region methodically and we will always get nearly the same number of lines falling in the high density region. The systematic density variance is therefore much lower than the random placement density variance. Although there is no way of getting a variance estimate that is exactly unbiased for a systematic sample \footnote {because it is effectively a sample of size 1- only the first line position was randomly chosen and the rest followed on deterministically from there.}, we can greatly improve on the random-based estimate by using a post-stratification scheme. 
+The estimation of encounter rate variance in Exercise 4.1 used estimators that assumed the transect lines were randomly placed throughout the triangular region. In our case, the transects were not random, but systematic and, in some circumstances, taking this in account can substantially reduce the encounter rate variance. The data we are working with is an example of this, where there are very high densities on the very shortest lines. In samples of lines, collected using a completely random design, the sample, by chance, might not contain any very short lines, or it might contain several. The variance is therefore very high, because the density estimates will be greatly affected by how many lines fall into the short-line / high-density region: we will get very low density estimates if there are no short lines, but very high density estimates if there are several short lines. By contrast, in a systematic sample, we cover the region methodically and we will always get nearly the same number of lines falling in the high density region. The systematic density variance is therefore much lower than the random placement density variance. Although there is no way of getting a variance estimate that is exactly unbiased for a systematic sample *because it is effectively a sample of size 1- only the first line position was randomly chosen and the rest followed on deterministically from there.* We can greatly improve on the random-based estimate by using a post-stratification scheme. 
 
 The post-stratification scheme works by grouping together pairs of adjacent lines from the systematic sample and each pair of adjacent lines is grouped into a stratum. The strata will improve variance estimation, because the systematic sample behaves more like a stratified sample than a random sample. This encounter rate estimator is called 'O2' (Fewster et al. 2009) and is implemented in the `dht2` function. 
 

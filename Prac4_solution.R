@@ -1,8 +1,8 @@
-## ----setup, include=FALSE-------------------------------------------------------
+## ----setup, include=FALSE------------------------------------------------------------
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 
-## ---- echo=T, eval=T------------------------------------------------------------
+## ---- echo=T, eval=T-----------------------------------------------------------------
 library(Distance)
 # Access data
 data("Systematic_variance_2")
@@ -15,7 +15,7 @@ sysvar2.hn$dht$individuals$D
 sysvar2.hn$dht$individuals$N
 
 
-## ---- quiet=T, suppress_messages=T, message=F, results=F------------------------
+## ---- quiet=T, suppress_messages=T, message=F, results=F-----------------------------
 # Bootstrap estimate of uncertainty
 # Run the bootstrap (this can take a while!) 
 est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,
@@ -23,12 +23,12 @@ est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,
                     convert.units=conversion.factor, nboot=50)
 
 
-## ---- eval=T--------------------------------------------------------------------
+## ---- eval=T-------------------------------------------------------------------------
 # See results
 summary(est.boot)
 
 
-## ---- echo=T, eval=T------------------------------------------------------------
+## ---- echo=T, eval=T-----------------------------------------------------------------
 ## Post-stratification by O2 estimator
 
 # ensure that Sample.Labels are numeric, for O2 ordering
@@ -40,7 +40,7 @@ est.O2 <- dht2(sysvar2.hn, flatfile=Systematic_variance_2,
 print(est.O2, report="density")
 
 
-## ---- echo=T, eval=T------------------------------------------------------------
+## ---- echo=T, eval=T-----------------------------------------------------------------
 # Access the data
 data("Systematic_variance_1")
 # Ensure that Sample.Labels are numeric, for O2 ordering
