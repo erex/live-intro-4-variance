@@ -1,14 +1,10 @@
 ---
 title: Introduction to distance sampling
-author: Centre for Research into Ecological and Environmental Modelling  **University of St Andrews**
-subtitle: Workshop, 06-17 July 2020
-date: Exercise 4. Variance estimation for systematic survey designs
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: Exercise 4. Variance estimation for systematic survey designs <br> September 2020
 output: 
-  html_document:
-    number_sections: yes
-    theme: flatly
+  rmdformats::readthedown:
     highlight: tango
-    df_print: kable
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -39,7 +35,6 @@ The aims of this exercise are to illustrate:
 Don't forget to load the `Distance` package for your session.
 
 ```{r, echo=T, eval=F}
-# Load package
 library(Distance)
 ```
 
@@ -151,4 +146,4 @@ Did you see a difference in the CV and 95\% confidence interval between the two 
 
 # References
 
-Fewster RM, Buckland ST, Burnham KP, Borchers DL, Jupp PE, Laake JL and Thomas L (2009) Estimating the encounter rate in distance sampling. Biometrics 65:225-236
+Fewster RM, Buckland ST, Burnham KP, Borchers DL, Jupp PE, Laake JL and Thomas L (2009) Estimating the encounter rate in distance sampling. Biometrics 65:225-236 https://doi.org/10.1111/j.1541-0420.2008.01018.x

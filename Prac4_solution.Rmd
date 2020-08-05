@@ -1,14 +1,10 @@
 ---
 title: Introduction to distance sampling
-author: Centre for Research into Ecological and Environmental Modelling  **University of St Andrews**
-subtitle: Workshop, 06-17 July 2020
-date: Exercise 4. Variance estimation for systematic survey designs 
+author: Centre for Research into Ecological and Environmental Modelling  <br> **University of St Andrews**
+date: Exercise 4. Variance estimation for systematic survey designs <br> September 2020
 output: 
-  html_document:
-    number_sections: yes
-    theme: flatly
+  rmdformats::readthedown:
     highlight: tango
-    df_print: kable
 ---
 
 ```{r setup, include=FALSE}
@@ -25,13 +21,11 @@ Recall the data for this example, in which we have a strong gradient in animal d
 
 ```{r, echo=T, eval=T}
 library(Distance)
-# Access data
 data("Systematic_variance_2")
 conversion.factor <- convert_units("metre", "kilometre", "square kilometre")
 # Fit a simple model
 sysvar2.hn <- ds(data=Systematic_variance_2, key="hn", adjustment="cos",
                  convert.units=conversion.factor)
-# Summary
 sysvar2.hn$dht$individuals$D
 sysvar2.hn$dht$individuals$N
 ```
@@ -45,15 +39,12 @@ The function `bootdht_Nhat_summarize` pulls out the estimates of abundance $(\ha
 The following command performs the bootstrap. 
 
 ```{r, quiet=T, suppress_messages=T, message=F, results=F}
-# Bootstrap estimate of uncertainty
-# Run the bootstrap (this can take a while!) 
 est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,
                     summary_fun=bootdht_Nhat_summarize, 
                     convert.units=conversion.factor, nboot=50)
 ```
 
 ```{r, eval=T}
-# See results
 summary(est.boot)
 ```
 
@@ -63,13 +54,10 @@ The bootstrap results are very similar to the analytical results, as we would ex
 
 ```{r, echo=T, eval=T}
 ## Post-stratification by O2 estimator
-
 # ensure that Sample.Labels are numeric, for O2 ordering
 Systematic_variance_2$Sample.Label <- as.numeric(Systematic_variance_2$Sample.Label)
-
 # Using the Fewster et al 2009, "O2" estimator 
-est.O2 <- dht2(sysvar2.hn, flatfile=Systematic_variance_2,
-               strat_formula=~1, convert_units=conversion.factor, er_est="O2")
+est.O2 <- dht2(sysvar2.hn, flatfile=Systematic_variance_2,   strat_formula=~1, convert_units=conversion.factor, er_est="O2")
 print(est.O2, report="density")
 ```
 
@@ -101,5 +89,5 @@ print(est2.O2, report="density")
 
 # References
 
-Fewster RM, Buckland ST, Burnham KP, Borchers DL, Jupp PE, Laake JL and Thomas L (2009) Estimating the encounter rate in distance sampling. Biometrics 65:225-236
+Fewster RM, Buckland ST, Burnham KP, Borchers DL, Jupp PE, Laake JL and Thomas L (2009) Estimating the encounter rate in distance sampling. Biometrics 65:225-236 https://doi.org/10.1111/j.1541-0420.2008.01018.x
 
