@@ -197,8 +197,8 @@
       </ul>
     </div>
     <div id="postamble" data-toggle="wy-nav-shift" class="status">
-                  <p class="author"><span class="glyphicon glyphicon-education"></span> Centre for Research into Ecological and Environmental Modelling <br> <strong>University of St Andrews</strong></p>
-                        <p class="date"><span class="glyphicon glyphicon-leaf"></span> Introduction to distance sampling<br> April 2021</p>
+                  <p class="author"><span class="glyphicon glyphicon-user"></span> Centre for Research into Ecological and Environmental Modelling <br> <strong>University of St Andrews</strong></p>
+                        <p class="date"><span class="glyphicon glyphicon-calendar"></span> Introduction to distance sampling<br> September 2021</p>
           </div>
    </div>
      
@@ -239,11 +239,11 @@
 <pre><code>## Bootstrap results
 ## 
 ## Boostraps          : 50 
-## Successes          : 50 
-## Failures           : 0 
+## Successes          : 7 
+## Failures           : 43 
 ## 
-##       median    mean     se    lcl     ucl   cv
-## Nhat 1007.06 1059.46 272.82 693.91 1630.16 0.27</code></pre>
+##       median    mean     se     lcl     ucl  cv
+## Nhat 1679.45 1737.58 333.01 1340.59 2287.92 0.2</code></pre>
 <p>The bootstrap results are very similar to the analytical results, as we would expect, because again this process assumed the transects were placed at random.</p>
 </div>
 <div id="post-stratification-to-improve-variance-estimation" class="section level1">
@@ -254,7 +254,14 @@
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the Fewster et al 2009, &quot;O2&quot; estimator </span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>est.O2 <span class="ot">&lt;-</span> <span class="fu">dht2</span>(sysvar2.hn, <span class="at">flatfile=</span>Systematic_variance_2,   <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">convert_units=</span>conversion.factor, <span class="at">er_est=</span><span class="st">&quot;O2&quot;</span>)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(est.O2, <span class="at">report=</span><span class="st">&quot;density&quot;</span>)</span></code></pre></div>
-<pre><code>## Summary statistics:
+<pre><code>## Density estimates from distance sampling
+## Stratification : geographical 
+## Variance       : O2, n/L 
+## Multipliers    : none 
+## Sample fraction : 1 
+## 
+## 
+## Summary statistics:
 ##  .Label Area CoveredArea Effort   n  k     ER se.ER cv.ER
 ##   Total  0.5      0.1922   9.61 254 20 26.431 1.459 0.055
 ## 
@@ -289,7 +296,14 @@
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>est2.O2 <span class="ot">&lt;-</span> <span class="fu">dht2</span>(sysvar1.hn, <span class="at">flatfile=</span>Systematic_variance_1, <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">convert_units=</span>conversion.factor, <span class="at">er_est=</span><span class="st">&quot;O2&quot;</span>)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(est2.O2, <span class="at">report=</span><span class="st">&quot;density&quot;</span>)</span></code></pre></div>
-<pre><code>## Summary statistics:
+<pre><code>## Density estimates from distance sampling
+## Stratification : geographical 
+## Variance       : O2, n/L 
+## Multipliers    : none 
+## Sample fraction : 1 
+## 
+## 
+## Summary statistics:
 ##  .Label Area CoveredArea Effort   n  k    ER se.ER cv.ER
 ##   Total  0.5      0.2058  10.29 252 20 24.49 1.594 0.065
 ## 
