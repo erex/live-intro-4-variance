@@ -234,16 +234,16 @@
 <p>The following command performs the bootstrap.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>est.boot <span class="ot">&lt;-</span> <span class="fu">bootdht</span>(<span class="at">model=</span>sysvar2.hn, <span class="at">flatfile=</span>Systematic_variance_2,</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">summary_fun=</span>bootdht_Nhat_summarize, </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">convert.units=</span>conversion.factor, <span class="at">nboot=</span><span class="dv">50</span>)</span></code></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">convert.units=</span>conversion.factor, <span class="at">nboot=</span><span class="dv">100</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(est.boot)</span></code></pre></div>
 <pre><code>## Bootstrap results
 ## 
-## Boostraps          : 50 
-## Successes          : 7 
-## Failures           : 43 
+## Boostraps          : 100 
+## Successes          : 14 
+## Failures           : 86 
 ## 
-##       median    mean     se     lcl     ucl  cv
-## Nhat 1679.45 1737.58 333.01 1340.59 2287.92 0.2</code></pre>
+##       median    mean     se     lcl     ucl   cv
+## Nhat 2114.41 2134.91 315.35 1622.31 2532.84 0.15</code></pre>
 <p>The bootstrap results are very similar to the analytical results, as we would expect, because again this process assumed the transects were placed at random.</p>
 </div>
 <div id="post-stratification-to-improve-variance-estimation" class="section level1">

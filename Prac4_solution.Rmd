@@ -43,7 +43,7 @@ The following command performs the bootstrap.
 ```{r, quiet=T, suppress_messages=T, message=F, results=F}
 est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,
                     summary_fun=bootdht_Nhat_summarize, 
-                    convert.units=conversion.factor, nboot=50)
+                    convert.units=conversion.factor, nboot=100)
 ```
 
 ```{r, eval=T}
