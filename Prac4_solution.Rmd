@@ -1,7 +1,7 @@
 ---
 title: Exercise 4<br> Variance estimation for systematic survey designs
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
-date: Introduction to distance sampling<br> January 2022
+date: Introduction to distance sampling<br> April 2022
 output: 
   rmdformats::readthedown:
     highlight: tango
@@ -27,7 +27,7 @@ data("Systematic_variance_2")
 conversion.factor <- convert_units("metre", "kilometre", "square kilometre")
 # Fit a simple model
 sysvar2.hn <- ds(data=Systematic_variance_2, key="hn", adjustment="cos",
-                 convert.units=conversion.factor)
+                 convert_units=conversion.factor)
 sysvar2.hn$dht$individuals$D
 sysvar2.hn$dht$individuals$N
 ```
@@ -43,7 +43,7 @@ The following command performs the bootstrap.
 ```{r, quiet=T, suppress_messages=T, message=F, results=F}
 est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,
                     summary_fun=bootdht_Nhat_summarize, 
-                    convert.units=conversion.factor, nboot=100)
+                    convert_units=conversion.factor, nboot=100)
 ```
 
 ```{r, eval=T}
@@ -78,7 +78,7 @@ data("Systematic_variance_1")
 Systematic_variance_1$Sample.Label <- as.numeric(Systematic_variance_1$Sample.Label)
 # First fit a simple model
 sysvar1.hn <- ds(Systematic_variance_1, key="hn", adjustment=NULL, 
-                 convert.units=conversion.factor)
+                 convert_units=conversion.factor)
 # Obtain default estimates for comparison
 sysvar1.hn$dht$individuals$D
 sysvar1.hn$dht$individuals$N

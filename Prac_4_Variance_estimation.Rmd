@@ -1,7 +1,7 @@
 ---
 title: Exercise 4<br> Variance estimation for systematic survey designs
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
-date: Introduction to distance sampling<br> January 2022
+date: Introduction to distance sampling<br> April 2022
 output: 
   rmdformats::readthedown:
     highlight: tango
@@ -50,7 +50,7 @@ data("Systematic_variance_2")
 conversion.factor <- convert_units("metre", "kilometre", "square kilometre")
 # Fit a simple model
 sysvar2.hn <- ds(data=Systematic_variance_2, key="hn", adjustment=NULL,
-                 convert.units=conversion.factor)
+                 convert_units=conversion.factor)
 # Summary
 sysvar2.hn$dht$individuals$D
 sysvar2.hn$dht$individuals$N
@@ -69,7 +69,7 @@ The following command performs the bootstrap.
 # Run the bootstrap (this can take a while if nboot is large!) 
 est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,
                     summary_fun=bootdht_Nhat_summarize,
-                    convert.units=conversion.factor, nboot=199)
+                    convert_units=conversion.factor, nboot=199)
 ```
 
 The arguments for this command are:
@@ -77,7 +77,7 @@ The arguments for this command are:
 -   `model` - fitted detection function model object
 -   `flatfile` - data frame of the survey data
 -   `summary_fun` - function used to obtain the summary statistics from each bootstrap
--   `convert.units` - conversion units for abundance estimation
+-   `convert_units` - conversion units for abundance estimation
 -   `nboot` - number of bootstrap samples to generate. Note, it can take a long time to produce a large number of bootstraps and so perhaps try a small number at first.
 
 ```{r, echo=T, eval=F}
@@ -134,7 +134,7 @@ data("Systematic_variance_1")
 Systematic_variance_1$Sample.Label <- as.numeric(Systematic_variance_1$Sample.Label)
 # First fit a simple model
 sysvar1.hn <- ds(Systematic_variance_1, key="hn", adjustment=NULL, 
-                 convert.units=conversion.factor)
+                 convert_units=conversion.factor)
 # Obtain default estimates for comparison
 sysvar1.hn$dht$individuals$D
 sysvar1.hn$dht$individuals$N

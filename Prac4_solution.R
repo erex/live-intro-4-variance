@@ -8,7 +8,7 @@ data("Systematic_variance_2")
 conversion.factor <- convert_units("metre", "kilometre", "square kilometre")
 # Fit a simple model
 sysvar2.hn <- ds(data=Systematic_variance_2, key="hn", adjustment="cos",
-                 convert.units=conversion.factor)
+                 convert_units=conversion.factor)
 sysvar2.hn$dht$individuals$D
 sysvar2.hn$dht$individuals$N
 
@@ -16,7 +16,7 @@ sysvar2.hn$dht$individuals$N
 ## ---- quiet=T, suppress_messages=T, message=F, results=F---------
 est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,
                     summary_fun=bootdht_Nhat_summarize, 
-                    convert.units=conversion.factor, nboot=50)
+                    convert_units=conversion.factor, nboot=50)
 
 
 ## ---- eval=T-----------------------------------------------------
@@ -39,7 +39,7 @@ data("Systematic_variance_1")
 Systematic_variance_1$Sample.Label <- as.numeric(Systematic_variance_1$Sample.Label)
 # First fit a simple model
 sysvar1.hn <- ds(Systematic_variance_1, key="hn", adjustment=NULL, 
-                 convert.units=conversion.factor)
+                 convert_units=conversion.factor)
 # Obtain default estimates for comparison
 sysvar1.hn$dht$individuals$D
 sysvar1.hn$dht$individuals$N
